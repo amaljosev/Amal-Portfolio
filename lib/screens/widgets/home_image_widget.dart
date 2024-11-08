@@ -10,7 +10,7 @@ class HomeImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: size.width * 0.5,
-      width: size.width * 0.5, 
+      width: size.width * 0.5,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -18,7 +18,17 @@ class HomeImageWidget extends StatelessWidget {
             radius: size.width * 0.2,
             backgroundColor: AppColors.secondaryBackground,
           ),
-          Image.asset('assets/images/amal_home.png'),
+          FutureBuilder(
+            future: precacheImage(
+                AssetImage('assets/images/amal_home.png'), context),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Image.asset('assets/images/amal_home.png');
+              } else {
+                return Center(child: const CircularProgressIndicator());
+              }
+            },
+          ),
         ],
       ),
     );

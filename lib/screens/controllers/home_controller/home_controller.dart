@@ -240,7 +240,7 @@ class HomeController extends GetxController {
   ];
   List<ProjectsModel> webApps = [
     ProjectsModel(
-        link: 'https://github.com/amaljosev/Amal-portfolio-flutter',
+        link: 'https://github.com/amaljosev/Amal-Portfolio',
         title: 'My Portfolio',
         template: 'assets/images/projects/personal_portfolio_template.png'),
     ProjectsModel(
@@ -250,7 +250,7 @@ class HomeController extends GetxController {
   ];
   List<ProjectsModel> desktopApps = [
     ProjectsModel(
-        link: 'https://github.com/amaljosev/Amal-portfolio-flutter',
+        link: 'https://github.com/amaljosev/Amal-Portfolio',
         title: 'My Portfolio',
         template: 'assets/images/projects/personal_portfolio_template.png'),
   ];
