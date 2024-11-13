@@ -1,15 +1,17 @@
+import 'package:amalportfolio/core/theme/theme.dart';
+import 'package:amalportfolio/screens/controllers/theme/theme_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:amalportfolio/core/colors/appcolors.dart';
+import 'package:get/get.dart';
+
 import 'package:amalportfolio/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   runApp(const MyApp());
 }
 
@@ -18,18 +20,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Amal Portfolio',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        scaffoldBackgroundColor: AppColors.primaryBackground,
-        appBarTheme: const AppBarTheme(
-            color: AppColors.secondaryBackground,
-            foregroundColor: AppColors.textLight),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const ScreenHome(),
-    );
+    final ThemeController themeController = Get.put(ThemeController());
+    return Obx(() => GetMaterialApp(
+          title: 'amaljose',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeController.theme,
+          debugShowCheckedModeBanner: false,
+          home: const ScreenHome(),
+        ));
   }
 }

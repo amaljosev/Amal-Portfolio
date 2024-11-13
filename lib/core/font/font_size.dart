@@ -1,5 +1,6 @@
 class FontSize {
   //Web
+  static const double webMainHeadingSize=0.035;
   static const double webHeadingSize=0.012;
   static const double webcontentSize=0.01;
   static const double webIconSizeLarge=0.05;

@@ -32,9 +32,10 @@ class ServiesWidget extends StatelessWidget {
       height: isMobile ? null : size.width * containerHeight,
       width: isMobile ? null : size.width * containerWidth,
       padding: EdgeInsets.all(padding),
-      decoration: const BoxDecoration(
-          color: AppColors.secondaryBackground,
+      decoration:  BoxDecoration(
+        color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.all(Radius.circular(18))),
+          
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

@@ -1,3 +1,4 @@
+import 'package:amalportfolio/core/font/font_size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:amalportfolio/core/colors/appcolors.dart';
@@ -18,12 +19,12 @@ class MyDrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeCtrl = Get.put(HomeController());
     return Drawer(
-      backgroundColor: AppColors.primaryBackground,
+      backgroundColor: Theme.of(context).primaryColor,
       child: Column(
         children: <Widget>[
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
-              color: AppColors.secondaryBackground,
+              color: Theme.of(context).primaryColor,
             ),
             child: Row(
               children: [
@@ -46,9 +47,11 @@ class MyDrawerWidget extends StatelessWidget {
                       child: ListTile(
                         title: Text(
                           homeCtrl.menu[index].title,
-                          style: Appstyles.drawerTextStyle,
+                          style: Appstyles.content(
+                              context: context,
+                              fontSize: FontSize.mobcontentSize),
                         ),
-                        hoverColor: AppColors.secondaryBackground,
+                        hoverColor: Theme.of(context).primaryColorDark,
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),

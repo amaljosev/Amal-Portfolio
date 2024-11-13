@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:amalportfolio/core/colors/appcolors.dart';
 import 'package:amalportfolio/core/styles/appstyles.dart';
 import 'package:amalportfolio/screens/controllers/home_controller/home_controller.dart';
 import 'package:amalportfolio/screens/widgets/projects_widget.dart';
@@ -66,21 +65,14 @@ class PortfolioWidget extends StatelessWidget {
                 margin: EdgeInsets.symmetric(
                     horizontal: size.width * portfolioHorzontalPadding,
                     vertical: size.width * portfolioVerticalPadding),
-                color: AppColors.secondaryBackground,
+                color: Theme.of(context).primaryColor,
                 child: TabBar(
                     indicatorSize: TabBarIndicatorSize.tab,
                     padding: const EdgeInsets.all(5),
-                    indicator: const BoxDecoration(
-                      color: AppColors.accentOrange,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    dividerColor: Colors.transparent,
+                   
                     labelStyle: Appstyles.headline(context, tabLabelFontSize),
-                    unselectedLabelColor: AppColors.textGray,
                     splashBorderRadius:
                         const BorderRadius.all(Radius.circular(10)),
-                    overlayColor:
-                        const WidgetStatePropertyAll(AppColors.borderLight),
                     tabs: const [
                       Tab(text: 'Mobile Apps'),
                       Tab(text: 'Web Apps'),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:amalportfolio/core/colors/appcolors.dart';
 
 class AnimatedProgressIndicator extends StatefulWidget {
   const AnimatedProgressIndicator({super.key,  this.progressValue=1.0});
@@ -47,7 +46,7 @@ class AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) => CircularProgressIndicator(
-        backgroundColor: AppColors.borderLight,
+        backgroundColor: Theme.of(context).primaryColor,
         value: _valueAnimation.value,
         valueColor: _colorAnimation,
       ),

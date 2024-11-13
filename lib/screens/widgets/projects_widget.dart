@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:amalportfolio/core/colors/appcolors.dart';
 import 'package:amalportfolio/core/font/font_size.dart';
 import 'package:amalportfolio/core/styles/appstyles.dart';
 import 'package:amalportfolio/screens/controllers/home_controller/home_controller.dart';
@@ -108,7 +107,7 @@ class ProjectsWidget extends StatelessWidget {
                           duration: const Duration(milliseconds: 500),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: AppColors.secondaryBackground
+                            color: Theme.of(context).dividerColor
                                 .withOpacity(isHover ? 0.9 : 0),
                           ),
                           child: Center(

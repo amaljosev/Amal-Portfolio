@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:amalportfolio/screens/widgets/main_heading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:amalportfolio/core/constants/constants.dart';
@@ -62,12 +63,7 @@ class _TabViewState extends State<TabView> {
             ],
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Services', style: Appstyles.headline(context, 0.04)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Services'),
           Appconstants.largeheight,
           Wrap(
             alignment: WrapAlignment.center,
@@ -89,12 +85,7 @@ class _TabViewState extends State<TabView> {
             ),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('About Me', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'About Me'),
           Appconstants.largeheight,
           Row(
             children: [
@@ -139,12 +130,7 @@ class _TabViewState extends State<TabView> {
             ),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Portfolio', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Portfolio'),
           PortfolioWidget(
             size: size,
             popupMainVerticalPadding: checkScreenSize(size),
@@ -169,12 +155,7 @@ class _TabViewState extends State<TabView> {
             downloadOnTap: () => log('hahah'),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Contact me', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Contact me'),
           ContactMeWidget(
               size: size,
               hintFontSize: FontSize.tabcontentSize,

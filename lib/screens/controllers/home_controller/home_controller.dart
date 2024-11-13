@@ -22,6 +22,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
+  RxBool isHoverOutlinedButton = false.obs;
+   RxBool isHoverFloatingActionButton = false.obs;
   final nameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final numberCtrl = TextEditingController();
@@ -39,28 +41,55 @@ class HomeController extends GetxController {
     detailsCtrl.text = '';
   }
 
+  RxDouble currentPixel = 0.0.obs;
+
   List<AppbarMenu> menu = [
-    AppbarMenu(index: 0, title: 'Home', style: Appstyles.appbarHoverTextStyle),
-    AppbarMenu(index: 1, title: 'Services', style: Appstyles.appbarTextStyle),
-    AppbarMenu(index: 2, title: 'About Me', style: Appstyles.appbarTextStyle),
-    AppbarMenu(index: 3, title: 'Portfolio', style: Appstyles.appbarTextStyle),
-    AppbarMenu(index: 4, title: 'Contact', style: Appstyles.appbarTextStyle),
+    AppbarMenu(
+        index: 0,
+        title: 'Home',
+        style: Appstyles.appbarTextStyle,
+        isActive: false.obs),
+    AppbarMenu(
+        index: 1,
+        title: 'Services',
+        style: Appstyles.appbarTextStyle,
+        isActive: false.obs),
+    AppbarMenu(
+        index: 2,
+        title: 'About Me',
+        style: Appstyles.appbarTextStyle,
+        isActive: false.obs),
+    AppbarMenu(
+        index: 3,
+        title: 'Portfolio',
+        style: Appstyles.appbarTextStyle,
+        isActive: false.obs),
+    AppbarMenu(
+        index: 4,
+        title: 'Contact',
+        style: Appstyles.appbarTextStyle,
+        isActive: false.obs),
   ];
   List<SocialModel> social = [
     SocialModel(
+        toolTip: 'Instagram',
         icon: FontAwesomeIcons.instagram,
         url: 'https://www.instagram.com/amaljose._/'),
     SocialModel(
-        icon: FontAwesomeIcons.github, url: 'https://github.com/amaljosev'),
+        toolTip: 'GitHub',
+        icon: FontAwesomeIcons.github,
+        url: 'https://github.com/amaljosev'),
     SocialModel(
+        toolTip: 'Facebook',
         icon: FontAwesomeIcons.facebook,
         url: 'https://www.facebook.com/athuljamal.vattakkunnel'),
     SocialModel(
+        toolTip: 'Linkedin',
         icon: FontAwesomeIcons.linkedin,
         url: 'https://www.linkedin.com/in/amaljosev/'),
   ];
   List<double> webScrollHeights = [
-    0.65,
+    0.0,
     0.52,
     0.5,
     0.5,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:amalportfolio/core/colors/appcolors.dart';
 import 'package:amalportfolio/core/styles/appstyles.dart';
 
 class MyTextField extends StatelessWidget {
@@ -30,7 +29,7 @@ class MyTextField extends StatelessWidget {
           enabled: isEnable,
           maxLines: maxLines,
           controller: controller,
-          cursorColor: AppColors.hoverActiveState,
+          cursorColor: Colors.deepOrange,
           decoration: InputDecoration(
               hintText: title,
               labelText: title,
@@ -39,7 +38,6 @@ class MyTextField extends StatelessWidget {
               hintStyle:
                   Appstyles.content(context: context, fontSize: hintFontSize),
               filled: true,
-              fillColor: AppColors.secondaryBackground,
               border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide.none)),

@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:amalportfolio/screens/controllers/theme/theme_controller.dart';
+import 'package:amalportfolio/screens/widgets/main_heading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:amalportfolio/core/constants/constants.dart';
@@ -35,12 +37,21 @@ class _MobileViewState extends State<MobileView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final homeCtrl = Get.put(HomeController());
+    final themeController = Get.find<ThemeController>();
 
     return Scaffold(
       appBar: AppBar(
         actions: [
-          MyElevationButton(
-              title: 'Hire Me', onPressed: () => homeCtrl.openMail()),
+          IconButton(
+              tooltip: themeController.isDarkMode.value
+                  ? 'Switch to Light mode'
+                  : 'Switch to Dark mode',
+              icon: Icon(
+                themeController.isDarkMode.value
+                    ? Icons.light_mode
+                    : Icons.dark_mode_outlined,
+              ),
+              onPressed: () => themeController.toggleTheme()),
           Appconstants.smallWidth
         ],
       ),
@@ -64,14 +75,10 @@ class _MobileViewState extends State<MobileView> {
             myMainAxisAlignment: MainAxisAlignment.center,
             myCrossAxisAlignment: CrossAxisAlignment.center,
           ),
+          Appconstants.largeheight,
           HomeImageWidget(size: size),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Services', style: Appstyles.headline(context, 0.07)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Services'),
           Appconstants.mediumheight,
           Column(
             children: List.generate(
@@ -90,12 +97,7 @@ class _MobileViewState extends State<MobileView> {
             ),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('About Me', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'About Me'),
           Appconstants.largeheight,
           Column(
             children: [
@@ -125,12 +127,7 @@ class _MobileViewState extends State<MobileView> {
             ],
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('My Skills', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'My Skills'),
           Appconstants.largeheight,
           SizedBox(
             child: Wrap(
@@ -146,12 +143,7 @@ class _MobileViewState extends State<MobileView> {
             ),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Portfolio', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Portfolio'),
           PortfolioWidget(
             size: size,
             popupMainVerticalPadding: checkScreenSize(size),
@@ -176,12 +168,7 @@ class _MobileViewState extends State<MobileView> {
             downloadOnTap: () => homeCtrl.downloadPdf(),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Contact me', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Contact me'),
           ContactMeWidget(
               size: size,
               hintFontSize: FontSize.mobcontentSize,

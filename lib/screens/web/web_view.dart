@@ -1,9 +1,9 @@
 import 'dart:developer';
+import 'package:amalportfolio/screens/widgets/main_heading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:amalportfolio/core/constants/constants.dart';
 import 'package:amalportfolio/core/font/font_size.dart';
-import 'package:amalportfolio/core/styles/appstyles.dart';
 import 'package:amalportfolio/screens/controllers/home_controller/home_controller.dart';
 import 'package:amalportfolio/screens/web/widgets/home_title_section_widget.dart';
 import 'package:amalportfolio/screens/widgets/about_image_widget.dart';
@@ -25,6 +25,7 @@ class WebView extends StatefulWidget {
 
 class _WebViewState extends State<WebView> {
   final ScrollController _scrollController = ScrollController();
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -35,11 +36,14 @@ class _WebViewState extends State<WebView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final homeCtrl = Get.put(HomeController());
+    _scrollController.addListener(() {
+      homeCtrl.currentPixel.value = _scrollController.position.pixels;
+    });
     return Scaffold(
       floatingActionButton: ScrollUpWidget(
           homeCtrl: homeCtrl, scrollController: _scrollController),
       appBar: PreferredSize(
-        preferredSize: Size(size.width, size.width * 0.05),
+        preferredSize: Size(size.width, size.height * 0.08),
         child: WebAppbar(
             size: size,
             controller: _scrollController,
@@ -47,6 +51,7 @@ class _WebViewState extends State<WebView> {
       ),
       body: ListView(
         controller: _scrollController,
+        padding: EdgeInsets.all(20),
         children: [
           Row(
             children: [
@@ -67,12 +72,7 @@ class _WebViewState extends State<WebView> {
             ],
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Services', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Services'),
           Appconstants.largeheight,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,12 +88,7 @@ class _WebViewState extends State<WebView> {
             ),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('About Me', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'About Me'),
           Appconstants.largeheight,
           Row(
             children: [
@@ -105,12 +100,7 @@ class _WebViewState extends State<WebView> {
             ],
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Portfolio', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Portfolio'),
           PortfolioWidget(
             size: size,
             popupMainVerticalPadding: checkScreenSize(size),
@@ -132,15 +122,10 @@ class _WebViewState extends State<WebView> {
             portfolioVerticalPadding: 0.01,
             tabLabelFontSize: FontSize.webHeadingSize,
             tabMainPadding: 0.015,
-            downloadOnTap: () => log('hahah'),
+            downloadOnTap: () => log(''),
           ),
           Appconstants.sHight(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Contact me', style: Appstyles.headline(context, 0.035)),
-            ],
-          ),
+          const MainHeadingWidget(heading: 'Contact me'),
           ContactMeWidget(
               size: size,
               hintFontSize: FontSize.webcontentSize,
@@ -156,6 +141,7 @@ class _WebViewState extends State<WebView> {
           )
         ],
       ),
+      
     );
   }
 }

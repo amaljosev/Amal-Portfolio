@@ -20,8 +20,8 @@ class ExpeienceWidget extends StatelessWidget {
     return Container(
       height: size.width * containerHeight,
       width: size.width * containerWidth,
-      decoration: const BoxDecoration(
-          color: AppColors.secondaryBackground,
+      decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -40,16 +40,11 @@ class ExpeienceWidget extends StatelessWidget {
                 Text('Experience',
                     style: Appstyles.bodyText(
                         context: context,
-                        color: AppColors.textLight,
+                        color: Theme.of(context).highlightColor,
                         fontSize: containerFontSize))
               ],
             ),
-            const VerticalDivider(
-              thickness: 2,
-              indent: 5,
-              endIndent: 5,
-              color: Colors.white24,
-            ),
+            const VerticalDivider(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,16 +57,11 @@ class ExpeienceWidget extends StatelessWidget {
                 Text('Projects',
                     style: Appstyles.bodyText(
                         context: context,
-                        color: AppColors.textLight,
+                        color: Theme.of(context).highlightColor,
                         fontSize: containerFontSize))
               ],
             ),
-            const VerticalDivider(
-              thickness: 2,
-              indent: 5,
-              endIndent: 5,
-              color: Colors.white24,
-            ),
+            const VerticalDivider(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +74,7 @@ class ExpeienceWidget extends StatelessWidget {
                 Text('Laguages',
                     style: Appstyles.bodyText(
                         context: context,
-                        color: AppColors.textLight,
+                        color: Theme.of(context).highlightColor,
                         fontSize: containerFontSize))
               ],
             )

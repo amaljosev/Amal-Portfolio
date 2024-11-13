@@ -19,12 +19,25 @@ class Appstyles {
       fontWeight: FontWeight.w500,
       color: AppColors.textLight);
 
-  static TextStyle headline(BuildContext context,double fontSize) {
+  static TextStyle headline(BuildContext context, double fontSize) {
     return TextStyle(
       fontSize: MediaQuery.of(context).size.width * fontSize,
       fontWeight: FontWeight.w500,
       fontFamily: 'Poppins',
       color: AppColors.textLight,
+    );
+  }
+
+  static TextStyle mainHeadline(
+      {required BuildContext context,
+      required double fontSize,
+      required Color? color}) {
+    return TextStyle(
+      fontSize: MediaQuery.of(context).size.width * fontSize,
+      fontWeight: FontWeight.w500,
+      fontFamily: 'Poppins',
+      wordSpacing: 10,
+      color: color,
     );
   }
 
@@ -44,7 +57,7 @@ class Appstyles {
       fontSize: MediaQuery.of(context).size.width * fontSize,
       fontWeight: FontWeight.w500,
       fontFamily: 'Poppins',
-      color: AppColors.textGray,
+      color:Theme.of(context).highlightColor,
     );
   }
 
@@ -58,6 +71,7 @@ class Appstyles {
       color: color,
     );
   }
+
   static TextStyle textfieldHintStyle(
       {required BuildContext context, required double fontSize}) {
     return TextStyle(

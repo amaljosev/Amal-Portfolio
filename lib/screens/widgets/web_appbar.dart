@@ -1,10 +1,8 @@
+import 'package:amalportfolio/core/constants/constants.dart';
+import 'package:amalportfolio/screens/controllers/theme/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:amalportfolio/core/colors/appcolors.dart';
-import 'package:amalportfolio/core/constants/constants.dart';
-import 'package:amalportfolio/core/styles/appstyles.dart';
 import 'package:amalportfolio/screens/controllers/home_controller/home_controller.dart';
-import 'package:amalportfolio/screens/common/my_elevated_button.dart';
 
 class WebAppbar extends StatelessWidget {
   const WebAppbar(
@@ -19,9 +17,9 @@ class WebAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeCtrl = Get.put(HomeController());
+    final themeController = Get.find<ThemeController>();
     return Obx(() => AppBar(
-          backgroundColor: AppColors.secondaryBackground,
-          foregroundColor: AppColors.textLight,
+          backgroundColor: Theme.of(context).primaryColor,
           centerTitle: true,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,9 +35,10 @@ class WebAppbar extends StatelessWidget {
                         onExit: (event) => homeCtrl.isHoverd[index] = false,
                         child: TextButton(
                           child: Text(homeCtrl.menu[index].title,
-                              style: homeCtrl.isHoverd[index]
-                                  ? Appstyles.appbarHoverTextStyle
-                                  : homeCtrl.menu[index].style),
+                              style: homeCtrl.isHoverd[index] ||
+                                      homeCtrl.menu[index].isActive.value
+                                  ? Theme.of(context).textTheme.headlineSmall
+                                  : Theme.of(context).textTheme.titleSmall),
                           onPressed: () {
                             if (index == homeCtrl.menu.length - 1) {
                               homeCtrl.menuScroll(
@@ -60,8 +59,13 @@ class WebAppbar extends StatelessWidget {
                       ),
                     )),
               ),
-              MyElevationButton(
-                  title: 'Hire Me', onPressed: () => homeCtrl.openMail()),
+              IconButton(
+                  icon: Icon(
+                    themeController.isDarkMode.value
+                        ? Icons.dark_mode
+                        : Icons.light_mode,
+                  ),
+                  onPressed: () => themeController.toggleTheme()),
               Appconstants.smallWidth
             ],
           ),

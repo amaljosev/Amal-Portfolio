@@ -27,7 +27,7 @@ class FooterWidget extends StatelessWidget {
     final homeCtrl = Get.find<HomeController>();
     return Container(
       width: size.width,
-      color: AppColors.secondaryBackground,
+      color: Theme.of(context).primaryColor,
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
