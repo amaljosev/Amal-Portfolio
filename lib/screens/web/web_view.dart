@@ -40,8 +40,6 @@ class _WebViewState extends State<WebView> {
       homeCtrl.currentPixel.value = _scrollController.position.pixels;
     });
     return Scaffold(
-      floatingActionButton: ScrollUpWidget(
-          homeCtrl: homeCtrl, scrollController: _scrollController),
       appBar: PreferredSize(
         preferredSize: Size(size.width, size.height * 0.08),
         child: WebAppbar(
@@ -141,7 +139,8 @@ class _WebViewState extends State<WebView> {
           )
         ],
       ),
-      
+      floatingActionButton: ScrollUpWidget(
+          homeCtrl: homeCtrl, scrollController: _scrollController),
     );
   }
 }

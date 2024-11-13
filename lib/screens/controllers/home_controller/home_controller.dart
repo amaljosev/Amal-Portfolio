@@ -24,6 +24,8 @@ import 'package:http/http.dart' as http;
 class HomeController extends GetxController {
   RxBool isHoverOutlinedButton = false.obs;
    RxBool isHoverFloatingActionButton = false.obs;
+     RxBool showSecondFab = false.obs;
+
   final nameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final numberCtrl = TextEditingController();
