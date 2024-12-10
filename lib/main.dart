@@ -2,7 +2,6 @@ import 'package:amalportfolio/core/theme/theme.dart';
 import 'package:amalportfolio/screens/controllers/theme/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:amalportfolio/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

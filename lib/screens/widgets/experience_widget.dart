@@ -71,7 +71,7 @@ class ExpeienceWidget extends StatelessWidget {
                         context: context,
                         color: AppColors.accentOrange,
                         fontSize: containerFontSize)),
-                Text('Laguages',
+                Text('Languages',
                     style: Appstyles.bodyText(
                         context: context,
                         color: Theme.of(context).highlightColor,
